@@ -13,8 +13,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float rotationSpeed = 60f;
 
+    //[Min(0f)]
+    //[SerializeField]
+    //private float jumpForce = 5f;
+
     private Rigidbody rb;
     private Vector2 movementAxis;
+    //private bool isGrounded;
 
     private void Awake()
     {
@@ -24,6 +29,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         UpdateMovementAxis();
+        //Jump();
     }
 
     private void FixedUpdate()
@@ -37,6 +43,38 @@ public class PlayerController : MonoBehaviour
         movementAxis.x = Input.GetAxis("Horizontal");
         movementAxis.y = Input.GetAxis("Vertical");
     }
+
+    //private void Jump()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+    //    {
+    //        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+    //    }
+    //}
+
+    //// Ensure player is grounded by checking collisions with the ground
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Ground"))
+    //    {
+    //        isGrounded = true;
+    //    }
+
+    //    if (collision.gameObject.CompareTag("Cube"))
+    //    {
+    //        var force = collision.gameObject.transform.localScale;
+    //        rb.AddForce(10 * force.y * Vector3.up, ForceMode.Impulse);
+    //        Debug.Log("Force = " + force.y * 20);
+    //    }
+    //}
+
+    //private void OnCollisionExit(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Ground"))
+    //    {
+    //        isGrounded = false;
+    //    }
+    //}
 
     private void UpdatePosition()
     {
