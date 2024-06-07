@@ -53,6 +53,9 @@ public class ObstacleController : MonoBehaviour
 
         // Apply a random scale to the obstacle
         newObstacle.transform.localScale = GetRandomSize();
+
+        // Apply a random color to the obstacle
+        ApplyRandomColor(newObstacle);
     }
 
     private Vector3 GetRandomPosition()
@@ -75,5 +78,21 @@ public class ObstacleController : MonoBehaviour
         float randomZ = Random.Range(minSize.z, maxSize.z);
 
         return new Vector3(randomX, randomY, randomZ);
+    }
+
+    private void ApplyRandomColor(GameObject obstacle)
+    {
+        // Get the Renderer component from the obstacle
+        Renderer renderer = obstacle.GetComponent<Renderer>();
+
+        if (renderer != null)
+        {
+            // Apply a random color to the material
+            renderer.material.color = new Color(
+                Random.value, // Red component
+                Random.value, // Green component
+                Random.value  // Blue component
+            );
+        }
     }
 }
